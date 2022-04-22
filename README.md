@@ -1,1 +1,1 @@
-# Rock-Paper-Scissors
+Rock Paper Scissors game Project - playing agains computer
