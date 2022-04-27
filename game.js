@@ -1,4 +1,3 @@
-
 let computerPlay =  () => {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
     if (randomNumber === 1){
@@ -38,7 +37,6 @@ function playRound(playerSelection, computerSelection){
     }
 };
 
-
 let btn1 = document.getElementById("rock");
 let btn2 = document.getElementById("paper");
 let btn3 = document.getElementById("scissors");
@@ -46,9 +44,19 @@ let container = document.getElementById("results");
 let roundResultcontent = document.createElement("p");
 let Scorecontent = document.createElement("p");
 let matchResultcontent = document.createElement("p");
-
+let playAgain = document.getElementById('playagain');
 let playerscore = 0;
 let computerscore = 0;
+let draw = 0;
+
+function containerScore(){
+    let score = `Your points: ${playerscore} Computer points: ${computerscore} Draws: ${draw}`;
+    Scorecontent.textContent = score;
+    container.appendChild(Scorecontent);
+    matchResultcontent.textContent = matchResults();
+    container.appendChild(matchResultcontent);
+};
+
 btn1.addEventListener(("click"), () => {
     let result = playRound("rock", computerPlay());
     if (result === "Win"){
@@ -61,16 +69,12 @@ btn1.addEventListener(("click"), () => {
         roundResultcontent.textContent = "Lose";
         container.appendChild(roundResultcontent);
     }
-    else {
+    else if (result === "Draw") {
+        draw ++;
         roundResultcontent.textContent = "Draw";
         container.appendChild(roundResultcontent);  
     }
-    let score = `Your points: ${playerscore} \nComputer points: ${computerscore}`;
-    Scorecontent.textContent = score;
-    container.appendChild(Scorecontent);
-    matchResultcontent.textContent = matchResults();
-    container.appendChild(matchResultcontent);
-    
+    containerScore()    
 });
 btn2.addEventListener(("click"), () => {
     let result = playRound("paper", computerPlay());
@@ -85,15 +89,12 @@ btn2.addEventListener(("click"), () => {
         roundResultcontent.textContent = "Lose";
         container.appendChild(roundResultcontent);
     }
-    else {
+    else if (result === "Draw") {
+        draw ++;
         roundResultcontent.textContent = "Draw";
         container.appendChild(roundResultcontent);  
     }
-    let score = `Your points: ${playerscore} \nComputer points: ${computerscore}`;
-    Scorecontent.textContent = score;
-    container.appendChild(Scorecontent);
-    matchResultcontent.textContent = matchResults();
-    container.appendChild(matchResultcontent);
+    containerScore()
 });
 btn3.addEventListener(("click"), () => {
     let result = playRound("scissors", computerPlay());
@@ -107,17 +108,21 @@ btn3.addEventListener(("click"), () => {
         roundResultcontent.textContent = "Lose";
         container.appendChild(roundResultcontent);
     }
-    else {
+    else if (result === "Draw") {
+        draw ++;
         roundResultcontent.textContent = "Draw";
         container.appendChild(roundResultcontent);  
     }
-    let score = `Your points: ${playerscore} \nComputer points: ${computerscore}`;
+    containerScore()
+});
+let asd = playAgain.addEventListener("click", () => {
+    playerscore = 0;
+    computerscore = 0;
+    draw = 0;
+    let score = `Your points: ${playerscore} Computer points: ${computerscore} Draws: ${draw}`;
     Scorecontent.textContent = score;
     container.appendChild(Scorecontent);
-    matchResultcontent.textContent = matchResults();
-    container.appendChild(matchResultcontent);
-});
-
+})
 function matchResults(){
     if (playerscore === 5){
         return "You Won this match";
