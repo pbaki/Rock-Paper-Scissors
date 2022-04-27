@@ -56,10 +56,21 @@ function containerScore(){
     matchResultcontent.textContent = matchResults();
     container.appendChild(matchResultcontent);
 };
+function matchResults(){
+    if (playerscore === 5){
+        return "You Won this match";
+    }
+    else if (computerscore === 5){
+        return "You Lost this match";
+    };
+}
 
 btn1.addEventListener(("click"), () => {
     let result = playRound("rock", computerPlay());
-    if (result === "Win"){
+    if (playerscore == 5 || computerscore == 5){
+        void(0);
+    }
+    else if (result === "Win"){
         playerscore ++;
         roundResultcontent.textContent = "Win";
         container.appendChild(roundResultcontent);
@@ -78,11 +89,13 @@ btn1.addEventListener(("click"), () => {
 });
 btn2.addEventListener(("click"), () => {
     let result = playRound("paper", computerPlay());
-    if (result === "Win"){
+    if (playerscore == 5 || computerscore == 5){
+        void(0);
+    }
+    else if (result === "Win"){
         playerscore ++;
         roundResultcontent.textContent = "Win";
         container.appendChild(roundResultcontent);
-        
     }
     else if (result === "Lose"){
         computerscore ++;
@@ -98,7 +111,10 @@ btn2.addEventListener(("click"), () => {
 });
 btn3.addEventListener(("click"), () => {
     let result = playRound("scissors", computerPlay());
-    if (result === "Win"){
+    if (playerscore == 5 || computerscore == 5){
+        void(0);
+    }
+    else if (result === "Win"){
         playerscore ++;
         roundResultcontent.textContent = "Win";
         container.appendChild(roundResultcontent);
@@ -115,7 +131,8 @@ btn3.addEventListener(("click"), () => {
     }
     containerScore()
 });
-let asd = playAgain.addEventListener("click", () => {
+playAgain.addEventListener("click", () => {
+    container.removeChild(matchResultcontent);
     playerscore = 0;
     computerscore = 0;
     draw = 0;
@@ -123,11 +140,3 @@ let asd = playAgain.addEventListener("click", () => {
     Scorecontent.textContent = score;
     container.appendChild(Scorecontent);
 })
-function matchResults(){
-    if (playerscore === 5){
-        return "You Won this match";
-    }
-    else if (computerscore === 5){
-        return "You Lost this match";
-    }
-}
