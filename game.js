@@ -16,31 +16,24 @@ let computerPlay =  () => {
 function playRound(playerSelection, computerSelection){
     input = playerSelection.toLowerCase();
     if (input === computerSelection){
-        console.log("Draw");
         return "Draw";
     }
     else if (input === "scissors" && computerSelection === "rock"){
-        console.log("Lose");
         return "Lose";
     }
     else if (input === "scissors" && computerSelection === "paper"){
-        console.log("Win");
         return "Win";;
     }
     else if (input === "rock" && computerSelection === "paper"){
-        console.log("Lose");
         return "Lose";
     }
     else if (input === "rock" && computerSelection === "scissors"){
-        console.log("Win");
         return "Win";       
     }
     else if (input === "paper" && computerSelection === "rock"){
-        console.log("Win");
         return "Win";
     }
     else if (input === "paper" && computerSelection === "scissors"){
-        console.log("Lose");
         return "Lose";
     }
 };
@@ -56,7 +49,6 @@ let matchResultcontent = document.createElement("p");
 
 let playerscore = 0;
 let computerscore = 0;
-console.log(`Your points: ${playerscore} \nComputer points: ${computerscore}`);
 btn1.addEventListener(("click"), () => {
     let result = playRound("rock", computerPlay());
     if (result === "Win"){
