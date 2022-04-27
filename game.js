@@ -42,15 +42,18 @@ let btn2 = document.getElementById("paper");
 let btn3 = document.getElementById("scissors");
 let container = document.getElementById("results");
 let roundResultcontent = document.createElement("p");
+roundResultcontent.style.textAlign = "center";
 let Scorecontent = document.createElement("p");
+Scorecontent.style.textAlign = "center";
 let matchResultcontent = document.createElement("p");
+matchResultcontent.style.textAlign = "center";
 let playAgain = document.getElementById('playagain');
 let playerscore = 0;
 let computerscore = 0;
 let draw = 0;
 
 function containerScore(){
-    let score = `Your points: ${playerscore} Computer points: ${computerscore} Draws: ${draw}`;
+    let score = `Your points: ${playerscore}, Computer points: ${computerscore}, Draws: ${draw}`;
     Scorecontent.textContent = score;
     container.appendChild(Scorecontent);
     matchResultcontent.textContent = matchResults();
@@ -136,7 +139,7 @@ playAgain.addEventListener("click", () => {
     playerscore = 0;
     computerscore = 0;
     draw = 0;
-    let score = `Your points: ${playerscore} Computer points: ${computerscore} Draws: ${draw}`;
+    let score = `Your points: ${playerscore}, Computer points: ${computerscore}, Draws: ${draw}`;
     Scorecontent.textContent = score;
     container.appendChild(Scorecontent);
 })
